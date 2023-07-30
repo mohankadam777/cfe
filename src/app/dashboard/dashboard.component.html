@@ -1,0 +1,67 @@
+<body>
+    <mat-toolbar class="bg-color-red" >
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>storefront</mat-icon>
+          </button>
+        <span>Cafe Management System</span>
+        <span class="example-spacer"></span>
+     
+        
+        <div style="align-content: end;"><app-header></app-header></div>
+      </mat-toolbar>
+      <div style=" background-color:white;display: flex;"> 
+
+<div class="sidebar"> 
+    <mat-nav-list appAccordion>
+        <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuItems()" routerLinkActive="selected" >
+<a appAccordionToggle [routerLink]="['/cafe/',menuitem.state]" *ngIf="menuitem.type=='link'">
+    <mat-icon style="color: white;">{{menuitem.icon}}</mat-icon>
+    <span style="color: white;">{{menuitem.name}}</span>
+    
+</a>
+        </mat-list-item>
+    </mat-nav-list>
+</div>
+<div  class="content" > 
+    <mat-card>
+        <b><span>Dashboard</span></b>
+    </mat-card>
+    <br>
+        
+      
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title"> Total Category</h2>
+                    <h2 class="title"> {{data?.category}} unit</h2>
+                    <p><button class="button" routerLink="['cafe/category']">View Category</button></p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title"> Total Products</h2>
+                    <h2 class="title"> {{data?.products}} unit</h2>
+                    <p><button class="button" routerLink="['cafe/products']">View Products  </button></p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title"> Total Bill</h2>
+                    <h2 class="title"> {{data?.bill}} unit</h2>
+                    <p><button class="button" routerLink="['cafe/bill']">View Bill</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      </div>
+    
+</body>

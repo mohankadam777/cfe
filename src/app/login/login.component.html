@@ -1,0 +1,41 @@
+<!-- <p>login works!</p> -->
+<button mat-icon-button mat-dialog-close style="float:right;margin:5px"> 
+    <mat-icon>close</mat-icon>
+</button>
+<mat-dialog-content>
+    <header><h1>Login</h1></header>
+    <form [formGroup]="loginForm">
+        <div>
+        
+        <mat-form-field appearence="standard"  >
+            <mat-label>Email :</mat-label>
+            <input type="text" matInput formControlName="email" required name="" id="email">
+            <mat-error *ngIf="loginForm.controls.email.touched&&loginForm.controls.email.invalid">
+                <span *ngIf="loginForm.controls.email.errors?.['required']">This is a required field</span>
+                <span *ngIf="loginForm.controls.email.errors?.['pattern']">This field is not valid</span>
+            </mat-error>  
+        </mat-form-field>
+
+        
+        <mat-form-field appearence="standard"  >
+            <mat-label>Password :</mat-label>
+            <input type="text" matInput formControlName="password" required name="" id="password">
+            <mat-error *ngIf="loginForm.controls.password.touched&&loginForm.controls.password.invalid">
+                <span *ngIf="loginForm.controls.password.errors?.['required']">This is a required field</span>
+                <span *ngIf="loginForm.controls.password.errors?.['pattern']">This field is not valid</span>
+            </mat-error>  
+        </mat-form-field>
+
+        </div>
+    </form>
+    
+</mat-dialog-content>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(loginForm.valid&&loginForm.dirty)">
+<mat-icon>login</mat-icon>Login
+    </button>
+    <button mat-raised-button  mat-dialog-close color="primary" >
+        <mat-icon>cancel</mat-icon>Close
+    </button>
+</mat-dialog-actions>
